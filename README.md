@@ -1,4 +1,4 @@
-An opaque `#[repr(C)]` wrapper for `#[repr(Rust)]` types that can be passed by value over FFI
+Opaque `#[repr(C)]` wrapper for `#[repr(Rust)]` types that can be passed by value over FFI
 
 **IMPORTANT** Only types requiring 8 Byte alignment or less can be wrapped, and the C
 environment must align uint64_t to at least 8 Byte boundaries.
@@ -15,5 +15,5 @@ pub extern "C" fn some_func() -> OpaqueWrapper {
 }
 ```
 
-*Acknowledgment* Thanks to [@QuineDot](https://github.com/QuineDot), [@h2co3](https://github.com/H2CO3), and 
+**Acknowledgment** Thanks to [@QuineDot](https://github.com/QuineDot), [@H2CO3](https://github.com/H2CO3), and 
 [@bruecki](https://users.rust-lang.org/u/bruecki/summary) for identifying unsound practices in earlier drafts of this crate.

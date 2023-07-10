@@ -2,5 +2,25 @@
 name = "repr_c_wrapper"
 version = "0.1.0"
 edition = "2021"
+authors = [
+    "Luke Peterson <luketpeterson@gmail.com>",
+]
+license = "MIT OR Apache-2.0"
+documentation = "https://docs.rs/repr_c_wrapper"
+repository = "https://github.com/luketpeterson/repr_c_wrapper"
+readme = "README.md"
+description = "Opaque `#[repr(C)]` wrapper that can be passed by value over FFI"
+keywords = [
+    "no_std",
+    "ffi",
+    "stack",
+    "move",
+    "bindings",
+]
+categories = [
+    "no-std",
+    "rust-patterns",
+    "development-tools::ffi",
+]
 
 [dependencies]
