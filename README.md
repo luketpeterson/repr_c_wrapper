@@ -3,7 +3,7 @@ Opaque `#[repr(C)]` wrapper for `#[repr(Rust)]` types that can be passed by valu
 **IMPORTANT** Only types requiring 8 Byte alignment or less can be wrapped, and the C
 environment must align uint64_t to at least 8 Byte boundaries.
 
-```
+``` Rust
 use repr_c_wrapper::*;
 
 #[repr(C)]
