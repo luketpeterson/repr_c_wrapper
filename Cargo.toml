@@ -1,6 +1,6 @@
 [package]
 name = "repr_c_wrapper"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 authors = [
     "Luke Peterson <luketpeterson@gmail.com>",

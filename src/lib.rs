@@ -83,42 +83,14 @@ macro_rules! repr_c_wrapper_t {
     ( $t:ty ) => { $crate::ReprCWrapper<{(core::mem::size_of::<core::mem::ManuallyDrop::<$t>>() + core::mem::size_of::<u64>() - 1) / core::mem::size_of::<u64>()}, $t> };
 }
 
-/// Derive this trait with [derive_wrap_repr_c] to conveniently get a [ReprCWrapper] for a type
-pub trait WrapReprC {
-    type WrapperT;
-
-    /// Wraps the type in a [ReprCWrapper]
-    fn into_repr_c(self) -> Self::WrapperT;
-}
-
-/// Derive the [WrapReprC] trait on a type
-/// 
-/// NOTE: this isn't a derive proc macro because you might want to explicitly implement this
-/// trait on a built-in type, and also because this macro is a stop-gap until a future version
-/// of Rust eliminates the need for the [WrapReprC] trait altogether.
-#[macro_export]
-macro_rules! derive_wrap_repr_c {
-    ( $t:ty ) => {
-        impl $crate::WrapReprC for $t {
-            type WrapperT = $crate::repr_c_wrapper_t!(Self);
-
-            fn into_repr_c(self) -> Self::WrapperT {
-                Self::WrapperT::new(self)
-            }
-        }
-    };
-}
-
 #[cfg(test)]
 mod test {
     use super::*;
 
-    derive_wrap_repr_c!(String);
-
     #[test]
-    fn test_derive_wrap_repr_c() {
+    fn test_basics() {
 
-        let mut wrapper = "Hello".to_string().into_repr_c();
+        let mut wrapper: repr_c_wrapper_t!(String) = "Hello".to_string().into();
         assert_eq!(*wrapper, "Hello");
 
         *wrapper = "World".to_string();
